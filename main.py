@@ -1,6 +1,3 @@
-# from sqlalchemy import create_engine
+from flask import Flask
 
-# class SQLiteConnector:
-
-#     def __init__(self):
-#         self.engine = create_engine
+app = Flask(__name__)
