@@ -1,4 +1,14 @@
+import json
 from werkzeug.exceptions import HTTPException
+
+
+class HandledException(HTTPException):
+    def __init__(self, e) -> None:
+        self.response = e.get_response()
+        self.response.content_type = "application/json"
+        self.response.data = json.dumps(
+            {"name": e.name, "description": e.description}
+        )
 
 
 class AlreadyAddedPhone(HTTPException):
