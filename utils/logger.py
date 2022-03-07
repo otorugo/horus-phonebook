@@ -12,15 +12,12 @@ class BaseLogger(Logger):
     )
 
     def __init__(self):
+        super().__init__(__name__)
         stream_handler = StreamHandler(stdout)
         fmt = Formatter("[%(levelname)s] (%(asctime)s) : %(message)s")
         stream_handler.setFormatter(fmt)
         self.addHandler(stream_handler)
         self.setLevel(self.levels[LOG_LEVEL])
-
-    def post_info(self, operation_message: str):
-        message = f"(POST) - {operation_message}"
-        self.info(msg=message)
 
 
 base_logger = BaseLogger()
