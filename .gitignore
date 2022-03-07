@@ -130,5 +130,4 @@ dmypy.json
 
 # development file
 todo.md
-*.db
 .vscode
