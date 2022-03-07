@@ -40,14 +40,18 @@ class ContactController(BaseController):
                 .filter(ContactModel.phone_number == new_phone_number)
                 .first()
             )
-            if flag_new_phone_number:
-                raise AlreadyAddedPhone(new_phone_number)
             row: ContactModel = (
                 self.session.query(ContactModel)
                 .filter(ContactModel.phone_number == old_phone_number)
                 .first()
             )
-            row.phone_number = new_phone_number
+            if flag_new_phone_number:
+                if flag_new_phone_number.deleted == 1:
+                    row.deleted = 1
+                else:
+                    raise AlreadyAddedPhone(new_phone_number)
+            else:
+                row.phone_number = new_phone_number
         except HTTPException as hpe:
             raise HandledException(hpe)
         except Exception as e:
