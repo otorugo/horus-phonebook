@@ -24,3 +24,41 @@ No diretório raiz, executar :
 ```bash
     python3 main.py
 ```
+
+
+### endpoints
+
+Os endpoints começam todos com ```/contact```
+
+#### Cadastrar contato
+
+    POST em /contact
+
+```json
+    {
+        "name": "Teste Name",
+        "phone_number" : "400289012"
+    }
+```
+
+#### Retornar todos contatos
+
+    GET em /contact/all
+
+#### Update de numero
+
+    PATCH /contact/update
+
+```json
+    {
+        "old_phone_number": "123",
+        "new_phone_number": "312"
+    }
+```
+
+#### Delete de numero
+
+    DELETE /contact/<phone_number>
+
+    Para o numero "123456":
+    A url fica /contact/123456
