@@ -1,5 +1,6 @@
 # from connectors.db import mysql_connector, Base
 # from pydantic import BaseModel
+from typing import List
 from connectors.sqlite_connector import db_connector
 from utils.logger import base_logger
 
@@ -25,3 +26,7 @@ class BaseController:
             data_dict[column.name] = str(getattr(row, column.name))
 
         return data_dict
+
+    def to_dict_list(self, rows: List) -> List[dict]:
+        parsed_list = list(map(self.to_dict, rows))
+        return parsed_list
