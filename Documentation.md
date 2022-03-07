@@ -62,3 +62,12 @@ Os endpoints começam todos com ```/contact```
 
     Para o numero "123456":
     A url fica /contact/123456
+
+
+
+
+### Rodando os testes
+
+```bash
+    python3 -m pytest
+```
